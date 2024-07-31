@@ -28,5 +28,5 @@ This website is currently under development. We're busy putting the finishing to
 
 **To stay in the Floop:**
 
-* **Follow us on social media (link to comming soon)**
-* **Sign up for our email list to receive updates (link to signup comming soon)**
+* **Follow us on social media (link coming soon)**
+* **Sign up for our email list to receive updates (link to signup coming soon)**
