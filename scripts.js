@@ -83,3 +83,18 @@ $(document).ready(function () {
     arrow.toggleClass("bounce");
   }, 1000);
 });
+
+$(document).ready(function () {
+  function isTouchDevice() {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }
+
+  if (isTouchDevice()) {
+    // Apply mobile and tablet-specific JavaScript behaviors here
+
+    // Remove smooth scrolling for touch devices
+    $("html, body").css("scroll-behavior", "auto"); // Additional touch-specific behavior
+
+    $(".about-header .nav-bar").hide(); // Hide nav bar in About section
+  } // Other existing JavaScript logic here...
+});
