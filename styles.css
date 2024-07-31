@@ -179,3 +179,44 @@ footer .arrow {
     text-decoration: none;
 }
 
+/* Mobile-specific styles */
+@media only screen and (max-width: 768px) {
+  .rotating-square {
+    width: 200px;
+    height: 200px;
+  }
+
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .nav-bar, .about.logo, .about.nav-bar {
+    display: none;
+  }
+
+  body {
+    overflow: auto;
+    scroll-behavior: auto;
+  }
+
+  /* About section specific adjustments */
+  .about-header .logo,
+  .about-header .nav-bar {
+    display: none;
+  }
+}
+
+/* Larger screens styles (min-width: 769px) */
+@media only screen and (min-width: 769px) {
+  .about-header .nav-bar {
+    display: flex;
+  }
+
+  .about-header .logo {
+    display: block;
+  }
+}

@@ -1,6 +1,10 @@
 $(document).ready(function () {
   let isAnimating = false;
 
+  function isMobile() {
+    return window.matchMedia("(max-width: 768px)").matches;
+  }
+
   function scrollToSection(section) {
     isAnimating = true;
     $("html, body").animate(
@@ -14,42 +18,46 @@ $(document).ready(function () {
     );
   }
 
-  $('a[href*="#"]').click(function (event) {
-    if (
-      location.pathname.replace(/^\//, "") ==
-        this.pathname.replace(/^\//, "") &&
-      location.hostname == this.hostname
-    ) {
-      var target = $(this.hash);
-      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-      if (target.length) {
-        event.preventDefault();
-        scrollToSection(target);
-      }
-    }
-  });
-
-  let currentSection = 0;
-  const sections = $(".section");
-  const totalSections = sections.length;
-
-  $(window).on("wheel", function (event) {
-    if (!isAnimating) {
-      if (event.originalEvent.deltaY > 0) {
-        // Scroll down
-        if (currentSection < totalSections - 1) {
-          currentSection++;
-          scrollToSection(sections[currentSection]);
-        }
-      } else {
-        // Scroll up
-        if (currentSection > 0) {
-          currentSection--;
-          scrollToSection(sections[currentSection]);
+  if (!isMobile()) {
+    $('a[href*="#"]').click(function (event) {
+      if (
+        location.pathname.replace(/^\//, "") ==
+          this.pathname.replace(/^\//, "") &&
+        location.hostname == this.hostname
+      ) {
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $("[name=" + this.hash.slice(1) + "]");
+        if (target.length) {
+          event.preventDefault();
+          scrollToSection(target);
         }
       }
-    }
-  });
+    });
+
+    let currentSection = 0;
+    const sections = $(".section");
+    const totalSections = sections.length;
+
+    $(window).on("wheel", function (event) {
+      if (!isAnimating) {
+        if (event.originalEvent.deltaY > 0) {
+          // Scroll down
+          if (currentSection < totalSections - 1) {
+            currentSection++;
+            scrollToSection(sections[currentSection]);
+          }
+        } else {
+          // Scroll up
+          if (currentSection > 0) {
+            currentSection--;
+            scrollToSection(sections[currentSection]);
+          }
+        }
+      }
+    });
+  }
 
   $(window).scroll(function () {
     const scrollTop = $(window).scrollTop();
